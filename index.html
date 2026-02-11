@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SURATARU Medicare | Ayurvedic Pharmacy</title>
+<link rel="ICON" href="icon.jpg">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f4fff4;
+    color:#2e4d2e;
+    overflow-x:hidden;
+}
+html, body{
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+
+/* HEADER */
+header{
+    background:linear-gradient(90deg,#0f5132,#198754);
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('Poppins-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('Poppins-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('Poppins-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:26px;
+    font-weight:700;
+    flex-wrap:wrap;
+}
+
+.logo span{
+    color:#c8ff9e;
+}
+
+.logo img{
+    height:70px;              /* Bigger size */
+    width:auto;
+    border:3px solid black;   /* Black border */
+    border-radius:12px;       /* Rounded corners */
+    padding:5px;              /* Space inside border */
+    background:white;         /* Clean background */
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-weight:bold;
+}
+
+
+/* HERO WITH ANIMATION */
+.hero{
+    position:relative;
+    height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+               url('hero.jpg') center/cover no-repeat;
+    overflow:hidden;
+}
+
+/* Floating Herbs */
+.leaf{
+    position:absolute;
+    width:60px;   /* slightly bigger */
+    opacity:0.8;
+    animation:float 20s linear infinite;
+    z-index:3;   /* important */
+}
+
+
+.leaf:nth-child(1){ left:10%; animation-duration:18s; }
+.leaf:nth-child(2){ left:30%; animation-duration:25s; }
+.leaf:nth-child(3){ left:60%; animation-duration:22s; }
+.leaf:nth-child(4){ left:80%; animation-duration:30s; }
+
+@keyframes float{
+    0%{ top:100%; transform:rotate(0deg); }
+    100%{ top:-10%; transform:rotate(360deg); }
+}
+
+.hero h1{ font-size:48px; margin-bottom:15px; }
+.hero p{ font-size:20px; margin-bottom:20px; }
+/* HERO SLIDER */
+.hero-slider {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:1;
+}
+
+.hero-slides {
+    display:flex;
+    height:100%;
+    transition:transform 0.8s ease-in-out;
+}
+
+.hero-slides img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    flex-shrink:0;
+}
+
+/* Overlay */
+.hero::after{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.55);
+    z-index:2;
+}
+
+/* Hero content above everything */
+.hero-content{
+    position:relative;
+    z-index:3;
+}
+
+/* Arrows */
+.hero-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+    z-index:4;
+    padding:10px;
+    user-select:none;
+}
+
+.hero-arrow.left{ left:20px; }
+.hero-arrow.right{ right:20px; }
+
+.btn{
+    padding:12px 25px;
+    background:#198754;
+    color:white;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:600;
+    margin:8px;
+    display:inline-block;
+}
+
+/* SECTIONS */
+.section{
+    padding:60px 10%;
+    text-align:center;
+}
+.section h2{
+    margin-bottom:30px;
+    font-size:32px;
+    color:#0f5132;
+}
+
+/* PRODUCTS GRID */
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:30px;
+    margin-top:40px;
+}
+
+/* PRODUCT CARD */
+.product-card{
+    background:white;
+    padding:30px 25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+    text-align:left;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.2);
+}
+
+/* ICON */
+.product-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+/* TEXT */
+.product-card h3{
+    color:#0f5132;
+    margin-bottom:5px;
+}
+
+.product-sub{
+    font-size:14px;
+    font-weight:600;
+    color:#198754;
+    margin-bottom:15px;
+}
+
+.product-card p{
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+/* LIST */
+.product-card ul{
+    padding-left:18px;
+}
+
+.product-card ul li{
+    margin-bottom:8px;
+}
+
+/* Highlight Card */
+.product-card.highlight{
+    border:2px solid #198754;
+    background:linear-gradient(#ffffff, #f1fff1);
+}
+
+
+/* TESTIMONIALS */
+.testimonials{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.testimonial-card{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.testimonial-card p{
+    font-style:italic;
+}
+
+.testimonial-card h4{
+    margin-top:15px;
+    color:#198754;
+}
+
+.stars{
+    color:#f4c430;
+}
+
+/* CONTACT */
+.contact{
+    background:#0f5132;
+    color:white;
+}
+.contact a{
+    color:#c8ff9e;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    width:60px;
+    height:60px;
+    background:#25d366;
+    color:white;
+    border-radius:50%;
+    font-size:30px;
+    text-align:center;
+    line-height:60px;
+    text-decoration:none;
+    box-shadow:0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* FOOTER */
+footer{
+    background:#0a3622;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+/* SLIDER / GALLERY */
+.slider{
+    max-width:1100px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:12px;
+    position:relative;
+    background:#000;
+}
+.slider-controls{
+    margin-top:15px;
+}
+/* Maintain fixed height */
+.slides{
+    display:flex;
+    transition:transform 0.5s ease-in-out;
+}
+
+/* Force aspect ratio */
+.slides img{
+    width:100%;
+    height:550px;              /* FIXED HEIGHT */
+    object-fit:cover;          /* Crop without distortion */
+    flex-shrink:0;
+    border-radius:12px;
+}
+/* SLIDER BUTTONS */
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:45px;
+    height:45px;
+    background:rgba(25,135,84,0.9); /* GREEN */
+    color:white;
+    border-radius:50%;
+    font-size:26px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:10;
+    box-shadow:0 4px 10px rgba(0,0,0,0.4);
+}
+
+.slider-btn:hover{
+    background:#0f5132;
+}
+
+.slider-btn.prev{
+    left:15px;
+}
+
+.slider-btn.next{
+    right:15px;
+}
+.slider-controls button{
+    padding:10px 20px;
+    margin:8px;
+    background:#198754;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.slider-controls button:hover{
+    background:#0f5132;
+}
+
+
+/* ============================= */
+/* MOBILE RESPONSIVE FIX */
+/* ============================= */
+
+@media(max-width:768px){
+
+    body{
+        overflow-x:hidden;
+    }
+
+    header{
+        padding:15px 20px;   /* reduce side padding */
+        flex-direction:column;
+        text-align:center;
+    }
+
+    nav{
+        margin-top:10px;
+    }
+
+    nav a{
+        display:inline-block;
+        margin:8px 10px;   /* reduce spacing */
+        font-size:14px;
+    }
+
+    .logo img{
+        height:55px;
+    }
+
+    .hero{
+        height:70vh;
+        padding:0 15px;
+    }
+
+    .hero h1{
+        font-size:26px;
+    }
+
+    .hero p{
+        font-size:16px;
+    }
+
+    .section{
+        padding:40px 20px;
+    }
+
+    .slides img{
+        height:250px;   /* reduce gallery height */
+    }
+
+    .slider{
+        max-width:100%;
+    }
+
+    .product-card{
+        padding:20px;
+    }
+
+    .hero-arrow{
+        font-size:28px;
+    }
+
+
+}
+@media(max-width:768px){
+
+    .logo{
+        flex-direction:column;   /* Stack logo + text */
+        gap:5px;
+        text-align:center;
+    }
+
+    .logo img{
+        height:50px;
+    }
+
+    .logo{
+        font-size:20px;   /* Reduce text size */
+        line-height:1.2;
+    }
+
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+       <img src="logo.jpeg" alt="SURATARU Medicare">
+        SURATARU <span>Medicare</span></div>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#product">Products</a>
+        <a href="#gallery">Photo Gallery</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <!-- HERO BACKGROUND SLIDER -->
+    <div class="hero-slider">
+        <div class="hero-slides" id="heroSlides">
+            <img src="photo (1).png">
+            <img src="photo (9).png">
+            <img src="photo (4).png">
+            <img src="photo (5).png">
+        </div>
+    </div>
+
+    <!-- ARROWS -->
+    <div class="hero-arrow left" onclick="prevHero()">❮</div>
+    <div class="hero-arrow right" onclick="nextHero()">❯</div>
+
+    <!-- Animated leaves -->
+    <img src="leaf (1).png" class="leaf">
+    <img src="leaf (2).png" class="leaf">
+    <img src="leaf (1).png" class="leaf">
+    <img src="leaf (2).png" class="leaf">
+
+    <!-- CONTENT -->
+    <div class="hero-content">
+        <h1>Pure Ayurveda for Natural Healing</h1>
+        <p>Trusted Ayurvedic Pain Relief Solution</p>
+
+        <a href="https://wa.me/917892735113?text=I%20want%20to%20order%20Spinegourd%20tablet"
+           target="_blank" class="btn">Order on WhatsApp</a>
+
+        <a href="mailto:suratarumedicare@gmail.com?subject=Medicine%20Order"
+           class="btn">Order via Email</a>
+    </div>
+
+</section>
+
+<section class="section" id="product">
+    <h2>Our Ayurvedic Products</h2>
+
+    <div class="products-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+            <div class="product-icon">🌿</div>
+            <h3>Spinegourd</h3>
+            <p class="product-sub">Ayurvedic Pain Killer Tablet</p>
+            <p>
+                Powerful herbal formulation for joint pain, back pain,
+                inflammation and stiffness.
+            </p>
+            <ul>
+                <li>Joint Pain Relief</li>
+                <li>Back Pain Support</li>
+                <li>Improves Mobility</li>
+                <li>No Side Effects</li>
+            </ul>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+            <div class="product-icon">👶</div>
+            <h3>Swarna Prashana</h3>
+            <p class="product-sub">Immunity Booster for Babies</p>
+            <p>
+                Traditional Ayurvedic formulation to enhance immunity,
+                memory and overall child development.
+            </p>
+            <ul>
+                <li>Boosts Immunity</li>
+                <li>Improves Memory</li>
+                <li>Healthy Growth</li>
+                <li>Safe & Natural</li>
+            </ul>
+        </div>
+
+        <!-- Custom Orders -->
+        <div class="product-card highlight">
+            <div class="product-icon">🧪</div>
+            <h3>Custom Medicine Preparation</h3>
+            <p class="product-sub">Made on Order</p>
+            <p>
+                We prepare customized Ayurvedic medicines based on
+                doctor prescriptions and traditional formulas.
+            </p>
+            <ul>
+                <li>Doctor Prescribed</li>
+                <li>Authentic Ingredients</li>
+                <li>Pure & Hygienic</li>
+                <li>Available on Order</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
+
+
+<!-- PRODUCT GALLERY -->
+<section class="section" id="gallery">
+    <h2>Product Gallery</h2>
+
+    <div class="slider">
+        <div class="slides" id="slides">
+            <img src="photo (1).png">
+            <img src="photo (3).png">
+            <img src="photo (4).png">
+            <img src="photo (5).png">
+            <img src="photo (6).png">
+            <img src="photo (7).png">
+            <img src="photo (8).png">
+            <img src="photo (9).png">
+            <img src="photo (11).png">
+            <img src="photo (2).png">
+            <img src="photo (10).png">
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button onclick="prevSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+</section>
+
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials">
+    <h2>What Our Customers Say</h2>
+
+    <div class="testimonials">
+        <div class="testimonial-card">
+            <p>"After using Spinegourd tablets for 2 weeks, my back pain reduced significantly."</p>
+            <div class="stars">★★★★★</div>
+            <h4>Ramesh K – Bengaluru</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Best Ayurvedic medicine for joint pain. No side effects at all."</p>
+            <div class="stars">★★★★★</div>
+            <h4>Savitha M – Hubli</h4>
+        </div>
+
+        <div class="testimonial-card">
+            <p>"Highly recommend SURATARU Medicare. Very effective pain relief."</p>
+            <div class="stars">★★★★☆</div>
+            <h4>Mahesh P – Dharwad</h4>
+        </div>
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>SURATARU Medicare</strong></p>
+    <p>📞 <a href="https://wa.me/917892735113">+91 7892735113</a></p>
+    <p>📧 <a href="mailto:suratarumedicare@gmail.com">suratarumedicare@gmail.com</a></p>
+</section>
+
+<footer>
+    © 2026 SURATARU Medicare | All Rights Reserved
+</footer>
+
+<a href="https://wa.me/917892735113" target="_blank" class="whatsapp-float">💬</a>
+<script>
+let index = 0;
+const slides = document.getElementById("slides");
+const totalSlides = slides.children.length;
+
+function showSlide(i){
+    if(i >= totalSlides){
+        index = 0;
+    }else if(i < 0){
+        index = totalSlides - 1;
+    }else{
+        index = i;
+    }
+    slides.style.transform = "translateX(" + (-index * 100) + "%)";
+}
+
+function nextSlide(){
+    showSlide(index + 1);
+}
+
+function prevSlide(){
+    showSlide(index - 1);
+}
+
+/* Auto slide */
+setInterval(nextSlide, 3000);
+</script>
+
+<script>
+let heroIndex = 0;
+const heroSlides = document.getElementById("heroSlides");
+const heroTotal = heroSlides.children.length;
+
+function showHero(i){
+    if(i >= heroTotal){
+        heroIndex = 0;
+    }else if(i < 0){
+        heroIndex = heroTotal - 1;
+    }else{
+        heroIndex = i;
+    }
+    heroSlides.style.transform = "translateX(" + (-heroIndex * 100) + "%)";
+}
+
+function nextHero(){
+    showHero(heroIndex + 1);
+}
+
+function prevHero(){
+    showHero(heroIndex - 1);
+}
+
+/* Auto slide hero */
+setInterval(nextHero, 4000);
+</script>
+
+
+</body>
+</html>
